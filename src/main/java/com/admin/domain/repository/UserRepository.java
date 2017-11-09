@@ -7,6 +7,7 @@ import com.admin.domain.modle.User;
 
 /**
  * @author Jonsy
+ * 这里是对user的一些操作
  *
  */
 public interface UserRepository {

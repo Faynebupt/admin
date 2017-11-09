@@ -1,5 +1,7 @@
 package com.admin.domain.modle;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
@@ -9,6 +11,8 @@ import java.util.UUID;
  * 用户
  *
  */
+@Entity
+@Table(name = "user")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;

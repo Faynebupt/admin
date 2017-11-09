@@ -19,6 +19,7 @@ import com.admin.domain.modle.SelectRole;
 import com.admin.domain.modle.User;
 import com.admin.domain.repository.RoleRepository;
 import com.admin.domain.repository.UserRepository;
+import com.admin.domain.repository.UserDao;
 import com.admin.domain.service.RoleSelectService;
 
 
@@ -29,19 +30,16 @@ import com.admin.domain.service.RoleSelectService;
 @Service
 @CacheConfig(cacheNames = "user")
 public class UserService {
-
     @Autowired
     protected UserRepository userRepository;
-
     @Autowired
     protected Md5PasswordEncoder md5PasswordEncoder;
-
     @Autowired
     protected RoleSelectService roleSelectService;
-
     @Autowired
     protected RoleRepository roleRepository;
-
+    @Autowired
+    protected UserDao userDao;
 
     @Caching(
             put = @CachePut(key = "#user.id"),
@@ -50,11 +48,15 @@ public class UserService {
     public User create(User user) {
         validate(user);
         Assert.hasText(user.getPassword());
+        //user和密码的非空非root判断。
         user.setDisabled(false);
         user.setCreateTime(new Date());
         user.setSalt(RandomStringUtils.randomAscii(10));
         user.setPassword(md5PasswordEncoder.encodePassword(user.getPassword(), user.getSalt()));
-        userRepository.add(user);
+        //这是jdbc的方法；service层调dao层。
+        // userRepository.add(user);
+        //这是jpa的方法；调dao层。
+        userDao.save(user);
         return user;
     }
 
@@ -78,56 +80,50 @@ public class UserService {
         userRepository.update(old);
         return user;
     }
-
     @Caching(
             evict = {@CacheEvict(value = "user-list", key = "'list'"), @CacheEvict(key = "#id")}
     )
     public void delete(String id) {
         userRepository.remove(id);
     }
-
     @Cacheable
     public User get(String id) {
         return userRepository.get(id);
     }
-
     @Cacheable(value = "user-list", key = "'list'")
     public List<User> list() {
         return userRepository.list();
     }
-
     @Caching(
             evict = {@CacheEvict(value = "user-list", key = "'list'"), @CacheEvict(key = "#id")}
     )
     public void switchStatus(String id, boolean disable) {
         userRepository.switchStatus(id, disable);
     }
-
-
-
     @Caching(
             evict = {@CacheEvict(value = "user-nav-menu", key = "#uid")}
     )
     public void grantRole(String uid, List<String> roleIds) {
         userRepository.updateRoles(uid, roleIds);
     }
-
-
+    //非空和非root判断！！~~~
     private void validate(User user) {
         Assert.hasText(user.getUsername());
+        /**
+         * assert是断言，一个正确的程序必须保证是true；一般来说，assertion用于保证程序最基本、关键的正确性。
+            assertion检查通常在开发和测试时开启。为了提高性能，在软件发布后，assertion检查通常是关闭的。
+         也可说是指针非空。
+         */
         if (user.isRoot()) {
             throw new IllegalArgumentException("user loginName cannot is root");
         }
     }
-
     public List<SelectRole> selectRoles(String uid) {
         return roleSelectService.mergeRole(roleRepository.list(), roleRepository.getRoles(uid));
     }
-
     public List<User> getUserByUname(String username){
         return userRepository.getUserByUname(username);
     }
-
     public List<User> getUserByEmail(String email){
         return userRepository.getUserByEmail(email);
     }

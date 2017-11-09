@@ -42,14 +42,17 @@ public class UserController {
 
     @Autowired
     protected UserService userService;
-
     @Autowired
     protected MenuService menuService;
 
     public static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    @RequestMapping(method = RequestMethod.POST,value = "/add")
+    @RequestMapping(method = RequestMethod.GET,value = "/add")
     public String create( UserCommond user){
+        User user1=new User();
+        user1=UserAssembler.commondToDomain(user);
+        //这里直接将转换得到的USER付给user1失败，是俩个不同的应用变量，也就是内存地址不同
+        //感觉如果要得到user的话，还是得通过 BeanUtil方法来实现。
         userService.create(UserAssembler.commondToDomain(user));
         return "redirect:/user";
     }
