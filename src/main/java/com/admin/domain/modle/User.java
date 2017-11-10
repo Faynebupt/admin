@@ -1,7 +1,6 @@
 package com.admin.domain.modle;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
@@ -17,25 +16,24 @@ public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+
+	@Id
+	@GeneratedValue
+	//@Column(nullable = false)
 	/** 主键ID */
 	private String id = UUID.randomUUID().toString();
-
 	/** 登录名称 */
 	private String username;
-
 	/** 密码 */
 	private String password;
-
 	/**密码加密的盐*/
 	private String salt;
-
 	/** 邮箱 */
 	private String email;
-
 	/** 是否禁用 */
 	private boolean disabled;
-
 	/** 创建时间 */
+	@Column(name="createTime")
 	private Date createTime;
 
 	/** 最后登录时间 */

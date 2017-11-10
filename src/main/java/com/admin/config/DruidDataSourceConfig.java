@@ -19,8 +19,7 @@ public class DruidDataSourceConfig {
 
     @Bean
     @ConfigurationProperties("spring.datasource.druid")
-    public DruidDataSource dataSource(
-            DataSourceProperties properties) {
+    public DruidDataSource dataSource(            DataSourceProperties properties) {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName(properties.determineDriverClassName());
         dataSource.setUrl(properties.determineUrl());

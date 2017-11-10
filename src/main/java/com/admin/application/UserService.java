@@ -38,6 +38,7 @@ public class UserService {
     protected RoleSelectService roleSelectService;
     @Autowired
     protected RoleRepository roleRepository;
+
     @Autowired
     protected UserDao userDao;
 
@@ -50,7 +51,7 @@ public class UserService {
         Assert.hasText(user.getPassword());
         //user和密码的非空非root判断。
         user.setDisabled(false);
-        user.setCreateTime(new Date());
+       // user.setCreateTime(new Date());
         user.setSalt(RandomStringUtils.randomAscii(10));
         user.setPassword(md5PasswordEncoder.encodePassword(user.getPassword(), user.getSalt()));
         //这是jdbc的方法；service层调dao层。
