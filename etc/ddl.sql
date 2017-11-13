@@ -107,9 +107,9 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'root', '5442b02dabc5ed9401be4dfe1ca8adb9', 'jonsychen@hotmail.com', 'r', '0', '2016-09-27 19:53:20', '2016-09-27 19:53:22');
-INSERT INTO `user` VALUES ('8891e12f-81a7-43cd-8ab8-4accdf141f96', 'jonsy', '2e9ca4d0b1a586fd80bc2ba782ac36bc', 'jonsychen@hotmail.com', '0', '0', '2016-10-31 21:16:47', null);
-INSERT INTO `user` VALUES ('aaf62456-d96c-4aae-bff0-90330a7d7a02', 'frank', '52d76781a799f857f35e3bb50c94c21e', 'jonsychen@hotmail.com', '0', '0', '2016-11-04 18:12:34', null);
+INSERT INTO `user` VALUES ('1', 'root', '5442b02dabc5ed9401be4dfe1ca8adb9', 'fayne@hotmail.com', 'r', '0', '2016-09-27 19:53:20', '2016-09-27 19:53:22');
+INSERT INTO `user` VALUES ('8891e12f-81a7-43cd-8ab8-4accdf141f96', 'jonsy', '2e9ca4d0b1a586fd80bc2ba782ac36bc', 'fayne@hotmail.com', '0', '0', '2016-10-31 21:16:47', null);
+INSERT INTO `user` VALUES ('aaf62456-d96c-4aae-bff0-90330a7d7a02', 'frank', '52d76781a799f857f35e3bb50c94c21e', 'fayne@hotmail.com', '0', '0', '2016-11-04 18:12:34', null);
 
 -- ----------------------------
 -- Table structure for `user_role`

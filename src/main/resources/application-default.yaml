@@ -14,7 +14,14 @@ management:
   context-path: /management
   security:
     enabled: false
-
+#spring.properties.hibernate.hbm2ddl.auto=create-drop
+#Spring-data-jpa依赖于Hibernate
+#spring.jpa.properties.hibernate.hbm2ddl.auto是hibernate的配置属性
+#主要作用是：自动创建、更新、验证数据库表结构
+#spring:
+#  properties:
+#    hibernate:
+#      hbm2ddl.auto: validate
 spring:
   application:
     name: admin

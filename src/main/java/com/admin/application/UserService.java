@@ -1,6 +1,5 @@
 package com.admin.application;
 
-import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.RandomStringUtils;
@@ -19,7 +18,6 @@ import com.admin.domain.modle.SelectRole;
 import com.admin.domain.modle.User;
 import com.admin.domain.repository.RoleRepository;
 import com.admin.domain.repository.UserRepository;
-import com.admin.domain.repository.UserDao;
 import com.admin.domain.service.RoleSelectService;
 
 
@@ -39,8 +37,6 @@ public class UserService {
     @Autowired
     protected RoleRepository roleRepository;
 
-    @Autowired
-    protected UserDao userDao;
 
     @Caching(
             put = @CachePut(key = "#user.id"),
@@ -55,9 +51,9 @@ public class UserService {
         user.setSalt(RandomStringUtils.randomAscii(10));
         user.setPassword(md5PasswordEncoder.encodePassword(user.getPassword(), user.getSalt()));
         //这是jdbc的方法；service层调dao层。
-        // userRepository.add(user);
+        userRepository.add(user);
         //这是jpa的方法；调dao层。
-        userDao.save(user);
+//        userDao.save(user);
         return user;
     }
 

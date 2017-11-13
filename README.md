@@ -15,19 +15,19 @@ admin项目实现了基础的用户/菜单/角色/权限功能，可以直接基
 ### 登陆
     测试账号：root/root
     接口地址：http://localhost:8080/to-login
-![image](https://github.com/jonsychen/admin/raw/master/etc/login.png)
+![image](https://github.com/Faynebupt/admin/raw/master/etc/login.png)
 ### 首页
-![image](https://github.com/jonsychen/admin/raw/master/etc/index.png)
+![image](https://github.com/Faynebupt/admin/raw/master/etc/index.png)
 ### 菜单管理
-![image](https://github.com/jonsychen/admin/raw/master/etc/menu.png)
+![image](https://github.com/Faynebupt/admin/raw/master/etc/menu.png)
 ### 角色管理
-![image](https://github.com/jonsychen/admin/raw/master/etc/role.png)
+![image](https://github.com/Faynebupt/admin/raw/master/etc/role.png)
 ### 用户管理
-![image](https://github.com/jonsychen/admin/raw/master/etc/user.png)
+![image](https://github.com/Faynebupt/admin/raw/master/etc/user.png)
 ## 联系我
-    Email: jonsychen@hotmail.com/i@jonsy.me
+    Email: fayne@hotmail.com/i@jonsy.me
     OICQ: 903352005
-    WeChat: Jonsychen_2013 
+    WeChat: fayne_2013 
 
 
 

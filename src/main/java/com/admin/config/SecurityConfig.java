@@ -57,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected Md5PasswordEncoder md5PasswordEncoder;
 
     @Value("${remember.key}")
-    private String key = "jonsychen@hotmail.com";
+    private String key = "fayne@hotmail.com";
 
 
     @Bean

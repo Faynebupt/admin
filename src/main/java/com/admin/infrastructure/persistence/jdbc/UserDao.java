@@ -1,4 +1,4 @@
-package com.admin.domain.repository;
+package com.admin.infrastructure.persistence.jdbc;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -8,7 +8,6 @@ import com.admin.domain.modle.User;
 /**
  * Created by NewUser on 2017/11/09.
  */
-
 @Repository
 public interface UserDao extends JpaRepository<User, Long> {
 //    User findByName(String name);//select * from user where name = #name
