@@ -1,29 +1,15 @@
 package com.admin.interfaces.web;
 
 import com.admin.application.DataService;
-import com.admin.application.MenuService;
 import com.admin.application.UserService;
-import com.admin.domain.modle.User;
+import com.admin.domain.modle.Data;
 import com.admin.interfaces.facade.assembler.UserAssembler;
-import com.admin.interfaces.facade.commondobject.ProfileCommand;
-import com.admin.interfaces.facade.commondobject.UserCommond;
-import com.admin.security.SecurityUtil;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.collect.Lists;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -52,8 +38,11 @@ public class DataController {
     }
 
     @RequestMapping(value = "/success",method = RequestMethod.GET)
-    public String success(Model model){
-//        model.addAttribute("messages",UserAssembler.domainToDto(dataService.list()));
+    public String success(@RequestParam Data data){
+//        这是一个测试data变量
+        Data data1=new Data();
+        data1.setContent("test");
+        dataService.save(data);
         return "data/success";
     }
 }
