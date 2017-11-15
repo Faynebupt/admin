@@ -1,5 +1,4 @@
 package com.admin.domain.modle;
-import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -13,13 +12,21 @@ public class Data implements Serializable {
     @GeneratedValue
     @Column(name="num")
     private int num;
+    @Column(name="introduce")
+    private String introduce;
     @Column(name="content")
     private String content;
     public int getNum() {
         return num;
     }
-    public void setNum(int num) {
+    public void setNum(int  num) {
         this.num = num;
+    }
+    public String  getIntroduce() {
+        return introduce;
+    }
+    public void setIntroduce(String  introduce) {
+        this.introduce = introduce;
     }
     public String getContent() {
         return content;

@@ -2,6 +2,7 @@ package com.admin.interfaces.web;
 
 import com.admin.application.DataService;
 import com.admin.application.UserService;
+import com.admin.domain.modle.Data;
 import com.admin.interfaces.facade.assembler.UserAssembler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,13 +27,19 @@ public class ShowController {
     protected DataService dataService;
 
     public static final Logger logger = LoggerFactory.getLogger(ShowController.class);
-    @RequestMapping
+    @RequestMapping(method = RequestMethod.GET)
     public String list(Model model){
-        return "show/show";
+        model.addAttribute("list",dataService.showScript());
+        return "show/list";
     }
-    @RequestMapping(value = "/list2" )
-    public String list2(Model model){
-        model.addAttribute("list",UserAssembler.domainToDto(dataService.list()));
-        return "show/list2";
+
+    @RequestMapping(value = "/success",method = RequestMethod.GET)
+    public String success( String introduce,Model model){
+        String contents=dataService.start(introduce);
+        System.out.println("contents :"+contents);
+        model.addAttribute("list",dataService.showScript());
+        return "show/list";
     }
+
+
 }

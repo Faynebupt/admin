@@ -4,9 +4,7 @@
     <div th:replace="head"></div>
     <!-- DataTables -->
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css"/>
-    <title>数据处理</title>
-
-
+    <title>脚本展示</title>
     <!--就是那个加号链接-->
 </head>
 <script type="text/javascript">
@@ -35,44 +33,16 @@
             <div class="row">
                 <div class="col-xs-12">
 
-                    <!--<div class="box">-->
-                        <!--<div class="box-header">-->
-                            <!--<a th:href="@{/data/list2}" title="新增帐号"><span class="glyphicon glyphicon-plus"></span></a>-->
-                        <!--</div>-->
+                    <!--这个是白框内可以写图形-->
 
-                        <!--<div class="box-body">-->
-
-                        <!--</div>-->
-                        <!--&lt;!&ndash; /.box-body &ndash;&gt;-->
-                    <!--</div>-->
-                    <!--&lt;!&ndash; /.box &ndash;&gt;-->
-
-
-                    <form  th:action="@{/data/success}"  id="trans" method="get">
-                        输入:<br/>
-                        <!--<input type="text" name="data.num"/>-->
-                        介绍:<br/>
-                        <input type="text" style="width:300px;height:30px" name="introduce"/>
-                        <br/>
-                        脚本:<br/>
-                        <!--<input type="text" style="width:300px;height:100px" name="substance"/>-->
-                        <!--<input type="" style="width:300px;height:100px" name="firstname"/>-->
-                        <textarea name="content" rows="10" cols="100" form="trans"></textarea>
-                        <br/>
-                        <input type="submit"/>
-                    </form>
                 </div>
                 <!-- /.col -->
             </div>
-
         </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-
-
 </div>
-
 <div th:replace="script"></div>
 <!-- page script -->
 <script>

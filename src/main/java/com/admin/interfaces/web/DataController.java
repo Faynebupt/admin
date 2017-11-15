@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-
 /**
  * @author Jonsy
  *
@@ -38,11 +36,13 @@ public class DataController {
     }
 
     @RequestMapping(value = "/success",method = RequestMethod.GET)
-    public String success(@RequestParam Data data){
-//        这是一个测试data变量
-        Data data1=new Data();
-        data1.setContent("test");
+    public String success( String introduce,String content){
+        Data data=new Data();
+        data.setIntroduce(introduce);
+        data.setContent(content);
         dataService.save(data);
-        return "data/success";
+        String contents=dataService.start(introduce);
+
+        return "data/list";
     }
 }

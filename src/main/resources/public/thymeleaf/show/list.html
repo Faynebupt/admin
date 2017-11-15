@@ -4,9 +4,7 @@
     <div th:replace="head"></div>
     <!-- DataTables -->
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css"/>
-    <title>数据处理</title>
-
-
+    <title>脚本展示</title>
     <!--就是那个加号链接-->
 </head>
 <script type="text/javascript">
@@ -34,45 +32,37 @@
         <section class="content">
             <div class="row">
                 <div class="col-xs-12">
-
-                    <!--<div class="box">-->
-                        <!--<div class="box-header">-->
-                            <!--<a th:href="@{/data/list2}" title="新增帐号"><span class="glyphicon glyphicon-plus"></span></a>-->
-                        <!--</div>-->
-
-                        <!--<div class="box-body">-->
-
-                        <!--</div>-->
-                        <!--&lt;!&ndash; /.box-body &ndash;&gt;-->
-                    <!--</div>-->
-                    <!--&lt;!&ndash; /.box &ndash;&gt;-->
-
-
-                    <form  th:action="@{/data/success}"  id="trans" method="get">
-                        输入:<br/>
-                        <!--<input type="text" name="data.num"/>-->
-                        介绍:<br/>
+                    <form th:action="@{/show/success}" id="start" method="get">
+                        输入introduce:<br/>
                         <input type="text" style="width:300px;height:30px" name="introduce"/>
                         <br/>
-                        脚本:<br/>
-                        <!--<input type="text" style="width:300px;height:100px" name="substance"/>-->
-                        <!--<input type="" style="width:300px;height:100px" name="firstname"/>-->
-                        <textarea name="content" rows="10" cols="100" form="trans"></textarea>
-                        <br/>
-                        <input type="submit"/>
+                        <input type="submit" value="运行脚本"/>
                     </form>
+
+                    <table id="dataTable" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>num</th>
+                            <th>introduce</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="item:${list}">
+                            <td th:text="${item.num}"></td>
+                            <td th:text="${item.introduce}">label</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+
                 </div>
                 <!-- /.col -->
             </div>
-
         </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-
-
 </div>
-
 <div th:replace="script"></div>
 <!-- page script -->
 <script>
